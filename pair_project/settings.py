@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_cleanup.apps.CleanupConfig',
     'imagekit',
     'django_bootstrap5',
+    'django_extensions',
 ]
 
 MIDDLEWARE = [
