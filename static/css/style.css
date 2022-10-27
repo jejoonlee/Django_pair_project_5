@@ -1,0 +1,32 @@
+/* 강사님 리스트 페이지 */
+
+.teacher_card {
+  margin: 1rem;
+  padding: 1rem;
+  box-shadow: 3px 4px 13px rgb(0, 0, 0, 0.15);
+  background-color: aqua;
+}
+
+/* 강사님 디테일 페이지 */
+
+.banner{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  background-color: aquamarine;
+}
+
+.banner-profile-image{
+  height: 200px;
+  width: 200px;
+  margin-top: 2rem;
+  border-radius: 50%;
+}
+
+.banner-intro{
+  text-align: center;
+  padding: 2rem;
+  font-weight: bold;
+}
