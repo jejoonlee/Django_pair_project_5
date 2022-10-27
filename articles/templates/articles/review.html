@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ teacher.english_name }}{% endblock title %}
+
+{% block content %}
+<section class="banner">
+  <img class="banner-profile-image" src="{{ teacher.image.url }}" alt="">
+  <h1 class="banner-intro">request.user님 {{ teacher.english_name }}에게 응원 댓글을 남겨주세요!</h1>
+</section>
+
+<section class="container">
+</section>
+
+{% endblock content %}
+
+{% block script %}
+{% endblock script %}
