@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 class Teacher(models.Model):
@@ -11,3 +12,4 @@ class Comment(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
   teacher = models.ForeignKey(Teacher, on_delete=models.SET_NULL, null=True)
+  user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)

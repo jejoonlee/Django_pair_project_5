@@ -30,3 +30,24 @@
   padding: 2rem;
   font-weight: bold;
 }
+
+.reviews-form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.teachers-comment{
+  width: 80%;
+  height: 4rem;
+}
+
+.submit-review{
+  margin: 1rem 0;
+  padding: 0.1rem 2rem;
+  border-radius: 5px;
+}
+
+.comment-cards{
+  margin: 1rem 0;
+}
