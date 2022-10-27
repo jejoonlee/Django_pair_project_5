@@ -7,21 +7,45 @@
 <section class="banner">
   <img class="banner-profile-image" src="{{ teacher.image.url }}" alt="">
   <h1 class="banner-intro">request.user님 {{ teacher.english_name }}에게 응원 댓글을 남겨주세요!</h1>
+  <a href="{% url 'articles:index' %}" class="hover">뒤로가기</a>
 </section>
 
 <section class="container mt-4">
-  <form action="{% url 'articles:comment' teacher.pk %}" method="post" class="reviews-form">
+  <form action="{% url 'articles:comment' teacher.pk %}" method="post" class="reviews-form" data-review-id="{{ teacher.pk }}">
     {% csrf_token %}
     {{ comment_form }}
     <button class="submit-review" type="submit">제출하기</button>
   </form>
 </section>
 
-<section class="comments-list">
+<section id="comments" class="comments-list">
   {% for comment in comments %}
   <div class="comment-cards">
-    <p class="comment-user">{{ comment.user }}</p>
-    <p class="comment-content">{{ comment.content }}</p>
+    <div class="comments d-flex justify-content-between align-items-center">
+      <div class="comment-user-info">
+        {% if comment.user.profile_image %}
+        <img class="comment-user-image" src="{{ comment.user.profile_image.url }}" alt="{{ comment.user.profile_image }}">
+        {% else %}
+        <img class="comment-user-image" src="https://images.squarespace-cdn.com/content/v1/564142efe4b09d10c39f8a8f/1594926536902-L2RPB0G2W5J7PK3GSJX8/no-person-profile-pic.png" alt="">
+        {% endif %}
+        <div class="detail-info">
+          <p class="comment-user mb-0">{{ comment.user.profile_name }} <span class="fs-5">| {{ comment.user.get_group_display }}</span></p>
+          <p class="mb-0 text-muted d-none d-lg-block">작성 시간: {{ comment.updated_at}}</p>
+          <a href="{% url 'articles:comment_delete' comment.pk teacher.pk %}">삭제하기</a>
+        </div>
+      </div>
+      <div class="like d-flex align-items-center">
+        {% if request.user not in comment.user_like.all %}
+        <i id="like-btn" data-comment-id="{{ comment.pk }}" data-teacher-id="{{ teacher.pk }}" class="bi bi-heart"></i>
+        <p class="like-cnt mb-0 ms-3">| {{ comment.user_like.count }}</p>
+        {% else %}
+        <i id="like-btn" data-comment-id="{{ comment.pk }}" data-teacher-id="{{ teacher.pk }}" class="bi bi-heart-fill"></i>
+        <p class="like-cnt mb-0 ms-3">| {{ comment.user_like.count }}</p>
+        {% endif %}
+      </div>
+    </div>
+    <hr>
+      <p class="comment-content">{{ comment.content }}</p>
   </div>
   {% endfor %}
 </section>
@@ -29,4 +53,47 @@
 {% endblock content %}
 
 {% block script %}
+<script>
+  const likeBtn = document.querySelector("#like-btn")
+
+  likeBtn.addEventListener('click', function(event) {
+    axios ({
+      method: 'get',
+      url: `/articles/${event.target.dataset.commentId}/like/${event.target.dataset.teacherId}/`
+    })
+    .then (response => {
+      if (response.data.isLike === true) {
+        event.target.classList.add('bi-heart-fill')
+        event.target.classList.remove('bi-heart')
+      } else {
+        event.target.classList.add('bi-heart')
+        event.target.classList.remove('bi-heart-fill')
+      }
+    
+    const likeCount = document.querySelector('.like-cnt')
+    likeCount.innerText = '| ' + response.data.likeCount
+    })
+  })
+</script>
+
+{% comment %} <script>
+  // 댓글 비동기
+  const commentForm = document.querySelector(".reviews-form")
+
+  const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+  commentForm.addEventListener('submit', function(event) {
+    event.preventDefault()
+    axios({
+      method: 'post',
+      url: `/articles/comment/${event.target.dataset.reviewId}/`,
+      headers: {'X-CSRFToken': csrftoken},
+      data: new FormData(commentForm) 
+    })
+    .then(response => {
+      console.log(response.data)
+    })
+  })
+</script>  {% endcomment %}
+
 {% endblock script %}

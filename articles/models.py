@@ -13,3 +13,4 @@ class Comment(models.Model):
   updated_at = models.DateTimeField(auto_now=True)
   teacher = models.ForeignKey(Teacher, on_delete=models.SET_NULL, null=True)
   user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, null=True)
+  user_like = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="comment_like")

@@ -27,7 +27,7 @@
 
 .banner-intro{
   text-align: center;
-  padding: 2rem;
+  padding: 2rem 2rem 0 2rem;
   font-weight: bold;
 }
 
@@ -48,6 +48,33 @@
   border-radius: 5px;
 }
 
+/* 댓글 */
 .comment-cards{
-  margin: 1rem 0;
+  width: 80%;
+  margin: 1rem auto;
+  padding: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.2);
+  background-color: rgb(194, 194, 194);
+}
+
+.comment-user-info{
+  display: flex;
+  align-items: center;
+}
+
+.comment-user-image{
+  width: 5rem;
+  height: 5rem;
+  margin-right: 2rem;
+  border-radius: 50%;
+}
+
+.bi-heart, .bi-heart-fill{
+  font-size: 2rem
+}
+
+.comment-user {
+  font-size: 1.5rem;
+  font-weight: bold;
 }
