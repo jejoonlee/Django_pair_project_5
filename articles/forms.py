@@ -7,3 +7,14 @@ class CommentForm(forms.ModelForm):
     fields = [
       'content',
     ]
+
+    labels = {
+      'content' : '',
+    }
+
+    widgets = {
+      'content' : forms.Textarea(attrs={
+        'class' : 'teachers-comment',
+        'rows' : 5,
+      })
+    }

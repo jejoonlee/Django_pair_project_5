@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+{% load django_bootstrap5 %}
 
-{% block title %}{{ teacher.english_name }}{% endblock title %}
+{% block title %}{{ teacher.english_name }}강사님{% endblock title %}
 
 {% block content %}
 <section class="banner">
@@ -9,7 +10,20 @@
 </section>
 
 <section class="container mt-4">
-  
+  <form action="{% url 'articles:comment' teacher.pk %}" method="post" class="reviews-form">
+    {% csrf_token %}
+    {{ comment_form }}
+    <button class="submit-review" type="submit">제출하기</button>
+  </form>
+</section>
+
+<section class="comments-list">
+  {% for comment in comments %}
+  <div class="comment-cards">
+    <p class="comment-user">{{ comment.user }}</p>
+    <p class="comment-content">{{ comment.content }}</p>
+  </div>
+  {% endfor %}
 </section>
 
 {% endblock content %}
