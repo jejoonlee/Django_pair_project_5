@@ -116,7 +116,7 @@
 .green:hover {
   background: #fff;
   box-shadow: 0px 2px 10px 5px #ffc1cc;
-  color: #000;
+  color: #ffc1cc;
 }
 .green:after {
   content: "";
@@ -159,7 +159,7 @@
   color: inherit;
 }
 
-/* GREEN CARDS */
+/* 강사목록 CARDS */
 .cards {
   display: flex;
   flex-wrap: wrap;
@@ -197,6 +197,9 @@
   background-color: rgba(255, 255, 255, 0.6);
   transition: all 0.5s;
 }
+.card__link:hover{
+  color: #937DC2;
+}
 .card__link:hover::after {
   width: 100%;
 }
@@ -220,7 +223,7 @@
 
 /* CARD BACKGROUNDS */
 .card-4 {
-  background: radial-gradient(#60efbc, #58d5c9);
+  background: radial-gradient(#ffc1cc, #FFA1CF);
 }
 
 /* RESPONSIVE */
@@ -228,4 +231,12 @@
   .cards {
     justify-content: center;
   }
+}
+
+/* 강사목록 로그아웃 버튼 */
+.logout {
+  text-decoration: none;
+}
+.logout:hover {
+  background-color: #EEEEEE;
 }
