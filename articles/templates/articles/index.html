@@ -9,8 +9,14 @@
 
 {% block content %}
 
+<div class="my-3 ms-4">
+  <a href="{% url 'accounts:logout' %}" class="logout " style="color: #F96666;">
+    <i class="bi bi-door-closed fs-5 me-1"></i>로그아웃
+  </a>
+</div>  
+
 <div class="main-container">
-  <div class="heading mt-3">
+  <div class="heading ">
     <h1 class="heading__title">Hypergrowth Teachers</h1>
     <p class="heading__credits"><a class="heading__link" target="_blank" href="https://dribbble.com/sl">Incredible Education to Trust and Hear</a></p>
   </div>
