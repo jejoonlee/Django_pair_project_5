@@ -1,20 +1,33 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}강사님들{% endblock title %}
 
-{% block content %}
-<h1 class="my-5 text-center">강사님들</h1>
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock css %}
 
-<section class="container">
-  <div class="row justify-content-center">
-    {% for teacher in teachers %}
-    <div class="teacher_card col-12 col-lg-6">
-      <h2>{{ teacher.english_name }}</h2>
-      <a href="{% url 'articles:review' teacher.pk %}">Detail</a>
-    </div>
-    {% endfor %}
+{% block content %}
+
+<div class="main-container">
+  <div class="heading mt-3">
+    <h1 class="heading__title">Hypergrowth Teachers</h1>
+    <p class="heading__credits"><a class="heading__link" target="_blank" href="https://dribbble.com/sl">Incredible Education to Trust and Hear</a></p>
   </div>
-</section>
+
+  {% for teacher in teachers %}
+  <div class="cards">
+    <div class="card card-4">
+      <div class="card__icon"><i class="fas fa-light fa-carrot"></i></div>
+      <p class="card__exit"></p>
+      <h2 class="card__title">{{ teacher.name }}</h2>
+      <p class="card__apply">
+        <a class="card__link" href="{% url 'articles:review' teacher.pk %}">Write Now <i class="fas fa-arrow-right"></i></a>
+      </p>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
 {% endblock content %}
 
