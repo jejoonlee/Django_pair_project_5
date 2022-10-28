@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
 
+{% block title %}회원가입{% endblock title %}
+
 {% block content %}
-  
-<h1>회원가입</h1>
+<section class="container ">
+<h1 class="my-3 text-center">회원가입</h1>
 <form action="" method="POST">
   {% csrf_token %}
-  {% bootstrap_form form %}
-  {% bootstrap_button button_type="submit" content="OK" %}
+  {{ form.as_p }}
+  <button type="submit">제출하기</button>
 </form>
+</section>
 
 {% endblock content %}
