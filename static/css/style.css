@@ -51,11 +51,14 @@
 /* 댓글 */
 .comment-cards{
   width: 80%;
-  margin: 1rem auto;
+  /* margin: 1rem auto; */
+  margin: auto;
+  margin-top: 1rem;
   padding: 1.5rem;
   border-radius: 10px;
   box-shadow: 4px 4px 4px rgb(0, 0, 0, 0.2);
-  background-color: rgb(194, 194, 194);
+  /* background-color: rgb(194, 194, 194); */
+  background-color: white;
 }
 
 .comment-user-info{
@@ -77,6 +80,27 @@
 .comment-user {
   font-size: 1.5rem;
   font-weight: bold;
+}
+
+/* 댓글 목록 */
+.comments-list {
+  background-color: #FFE3E1;
+  border-radius: 50px 50px 0 0;
+}
+
+/* 하트 색 */
+.bi-heart, .bi-heart-fill {
+  color: #f48fb1;
+}
+
+/* 댓글 삭제하기 버튼 */
+.delete {
+  text-decoration: none;
+}
+.delete:hover {
+  text-decoration: underline;
+  text-decoration-color: #ffc1cc;
+  text-decoration-style: double;
 }
 
 /* ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ */
@@ -239,4 +263,33 @@
 }
 .logout:hover {
   background-color: #EEEEEE;
+}
+
+
+.back {
+  text-decoration: none;
+}
+.back:hover {
+  background-color: #f9e2e6;
+}
+
+/* 댓글목록 제목 */
+.title {
+  margin-top: 0px;
+  margin-bottom: 50px;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 3rem;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+  color: #fff;
+  text-shadow: -4px 4px #ef3550,
+               -8px 8px #f48fb1,
+               -12px 12px #7e57c2,
+               -16px 16px #2196f3,
+               -20px 20px #26c6da,
+               -24px 24px #43a047,
+               -28px 28px #eeff41,
+               -32px 32px #f9a825,
+               -36px 36px #ff5722;
 }
