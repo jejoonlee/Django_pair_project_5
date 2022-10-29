@@ -82,6 +82,14 @@
   font-weight: bold;
 }
 
+
+/* 댓글목록 상단 배경 */
+.comment-banner {
+  background: #ddd6f3; 
+  background: -webkit-linear-gradient(to right, #faaca8, #ddd6f3); 
+  background: linear-gradient(to right, #faaca8, #ddd6f3); 
+}
+
 /* 댓글 목록 */
 .comments-list {
   background-color: #FFE3E1;
@@ -161,7 +169,6 @@
   transition: 0s
 }
 .green:focus { outline:0; }
-
 
 /* 강사목록 HEADING */
 .heading {
@@ -265,12 +272,14 @@
   background-color: #EEEEEE;
 }
 
-
+/* 댓글목록 뒤로가기 버튼 */
 .back {
+  color: white;
   text-decoration: none;
 }
 .back:hover {
-  background-color: #f9e2e6;
+  color: black;
+  background-color: white;
 }
 
 /* 댓글목록 제목 */
