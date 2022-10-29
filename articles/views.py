@@ -19,9 +19,9 @@ def review(request, pk):
   comment_form = CommentForm()
 
   context = {
-    'teacher': teacher,
+    'teacher':  teacher,
     'comment_form' : comment_form,
-    'comments' : Comment.objects.all(),
+    'comments' : teacher.comment_set.all(),
   }
   return render(request, 'articles/review.html', context)
 
