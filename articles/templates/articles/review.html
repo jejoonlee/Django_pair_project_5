@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load django_bootstrap5 %}
+{% load static %}
 
 {% block title %}{{ teacher.english_name }}강사님{% endblock title %}
 
@@ -17,7 +18,15 @@
   </div>
 
   <div class="d-flex justify-content-center">
-    <img class="banner-profile-image text-center" src="https://image.rocketpunch.com/user/224520/224520_1560991767.jpg?s=200x200&t=cover" alt=""> 
+    {% if teacher.english_name == 'Kang' %}
+    <img class="banner-profile-image text-center" src="{% static 'images/kang.webp' %}" alt="">
+    {% elif teacher.english_name == 'Tak' %}
+    <img class="banner-profile-image text-center" src="{% static 'images/tak.webp' %}" alt="">
+    {% elif teacher.english_name == 'Beemo' %}
+    <img class="banner-profile-image text-center" src="{% static 'images/bmo.jpg' %}" alt="">
+    {% elif teacher.english_name == 'Feel' %}
+    <img class="banner-profile-image text-center" src="{% static 'images/feel.png' %}" alt="">
+    {% endif %}
   </div>
 
   <section class="container mt-4">
