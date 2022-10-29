@@ -4,12 +4,17 @@
 {% block title %}회원가입{% endblock title %}
 
 {% block content %}
-<section class="container ">
-<h1 class="my-3 text-center">회원가입</h1>
+
+<section class="container">
+<h1 class="my-4 text-center">회원 가입</h1>
 <form action="" method="POST">
   {% csrf_token %}
-  {{ form.as_p }}
-  <button type="submit">제출하기</button>
+  <div class="my-5" style="color: gray;">
+    {{ form.as_p }}
+  </div>
+  <div class=" mb-5" style="height: 3rem;">
+    <button class="green btn w-100 h-100" type="submit">하그스랜드 시작하기</button>
+  </div>
 </form>
 </section>
 
