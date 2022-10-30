@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load django_bootstrap5 %}
+
+{% block title %}프로필{% endblock title %}
+
+{% block content %}
+
+<section class="container">
+<h1 class="my-4 text-center">내 프로필</h1>
+<form action="" method="POST">
+  {% csrf_token %}
+  <div class="my-5" style="color: gray;">
+    {{ form.as_p }}
+  </div>
+  <div class=" mb-5" style="height: 3rem;">
+    <button class="green btn w-100 h-100" type="submit">프로필 수정하기</button>
+  </div>
+</form>
+</section>
+
+{% endblock content %}

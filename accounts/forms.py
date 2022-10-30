@@ -1,6 +1,20 @@
 from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserChangeForm
 from django.contrib.auth import get_user_model
 from django import forms
+
+class CustomUserChangeForm(UserChangeForm):
+    class Meta:
+        model = get_user_model()
+        fields = (
+            'profile_name', 
+            'group',
+        )
+        
+        labels = {
+            'profile_name': '변경할 닉네임', 
+            'group': '학생 or 강사',
+        }
 
 class CustomUserCreationForm(UserCreationForm):
     class Meta():

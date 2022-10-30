@@ -7,10 +7,17 @@
 {% block content %}
 
 <div class="comment-banner">
-  <div class="py-3 ms-4">
-    <a href="{% url 'articles:index' %}" class="back">
-      <i class="bi bi-arrow-bar-left fs-5 me-1"></i>뒤로가기
-    </a>
+  <div class="d-flex justify-content-between">
+    <div class="py-3 ms-4">
+      <a href="{% url 'articles:index' %}" class="back">
+        <i class="bi bi-arrow-bar-left fs-5 me-1"></i>뒤로가기
+      </a>
+    </div>
+    <div class="py-3 me-4">
+      <a href="{% url 'accounts:profile'%}" class="back">
+        <i class="bi bi-person-circle fs-5 me-1"></i>내 프로필
+      </a>
+    </div>
   </div>
 
   <div class="fw-bold display-6 h-100 d-flex justify-content-center align-items-center">
