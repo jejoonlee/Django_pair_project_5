@@ -85,24 +85,29 @@
 
 {% block script %}
 <script>
-  const likeBtn = document.querySelector("#like-btn")
+  const likeBtn = document.querySelectorAll("#like-btn")
 
-  likeBtn.addEventListener('click', function(event) {
-    axios ({
-      method: 'get',
-      url: `/articles/${event.target.dataset.commentId}/like/${event.target.dataset.teacherId}/`
-    })
-    .then (response => {
-      if (response.data.isLike === true) {
-        event.target.classList.add('bi-heart-fill')
-        event.target.classList.remove('bi-heart')
-      } else {
-        event.target.classList.add('bi-heart')
-        event.target.classList.remove('bi-heart-fill')
-      }
-    
-    const likeCount = document.querySelector('.like-cnt')
-    likeCount.innerText = '| ' + response.data.likeCount
+  likeBtn.forEach((likeBtn) => {
+    likeBtn.addEventListener('click', function(event) {
+      axios ({
+        method: 'get',
+        url: `/articles/${event.target.dataset.commentId}/like/${event.target.dataset.teacherId}/`
+      })
+      .then (response => {
+        console.log(response.data.isLike)
+        if (response.data.isLike === true) {
+          event.target.classList.add('bi-heart-fill')
+          event.target.classList.remove('bi-heart')
+        } else {
+          event.target.classList.add('bi-heart')
+          event.target.classList.remove('bi-heart-fill')
+        }
+      
+      const likeCount = document.querySelectorAll('.like-cnt')
+      likeCount.forEach((likeCount) => {
+        likeCount.innerText = '| ' + response.data.likeCount
+        })
+      })
     })
   })
 </script>

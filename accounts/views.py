@@ -8,8 +8,9 @@ def signup(request):
     if request.method == 'POST':
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
-            form.save()
-            return redirect('articles:index')
+            user_login = form.save()
+            auth_login(request, user_login)
+            return redirect(request.GET.get('next') or 'articles:index')
     else:
         form = CustomUserCreationForm()
     context = {
