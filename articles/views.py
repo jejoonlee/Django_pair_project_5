@@ -36,7 +36,20 @@ def comment(request, pk):
       comment.teacher = teacher
       comment.user = request.user
       comment.save()
-  return redirect('articles:review', teacher.pk)
+
+      data = {
+        'commentUser' : comment.user,
+        'user' : request.user,
+        'content': comment.content,
+        'profileName' : comment.user.profile_name,
+        'updatedAt' : comment.updated_at,
+        'commentPk' : comment.pk,
+        'teacherPk' : teacher.pk,
+        'userGroup' : comment.user.get_group_display,
+        'userLikeCount' : comment.user_like.count,
+        'userLike' : comment.user_like.all(),
+      }
+  return JsonResponse(data)
 
 @login_required
 def comment_delete(request, pk, teacher_pk):
