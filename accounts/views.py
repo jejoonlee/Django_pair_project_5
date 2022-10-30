@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from .forms import CustomUserCreationForm
+from .forms import CustomUserChangeForm
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
+from django.contrib.auth.decorators import login_required
 
 def signup(request):
     if request.method == 'POST':
@@ -33,3 +35,17 @@ def login(request):
 def logout(request):
     auth_logout(request)
     return redirect('accounts:login')
+
+@login_required
+def profile(request):
+    if request.method == 'POST':
+        form = CustomUserChangeForm(request.POST, instance=request.user)
+        if form.is_valid():
+            form.save()
+            return redirect('articles:index')
+    else:
+        form = CustomUserChangeForm(instance=request.user)
+    context = {
+        'form': form
+    }
+    return render(request, 'accounts/profile.html', context)
