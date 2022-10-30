@@ -1,7 +1,7 @@
 
 # 💬 하그스랜드
 
-🔗 [배포 URL](https://www.google.co.kr/)
+🔗 [배포 URL](https://obscure-beach-88684.herokuapp.com/)
 
 ## 개요
 
