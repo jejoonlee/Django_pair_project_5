@@ -1,3 +1,6 @@
+
+/*  */
+
 /* 강사님 리스트 페이지 */
 
 .teacher_card {
@@ -40,6 +43,14 @@
 .teachers-comment{
   width: 80%;
   height: 4rem;
+  background-color: #ffe9e7;
+  border: 0px;
+  border-radius: 10px
+}
+
+.teachers-comment::placeholder {
+  color:rgb(155, 155, 155);
+  text-align: center;
 }
 
 .submit-review{

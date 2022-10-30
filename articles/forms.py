@@ -15,6 +15,7 @@ class CommentForm(forms.ModelForm):
     widgets = {
       'content' : forms.Textarea(attrs={
         'class' : 'teachers-comment',
+        'placeholder' : '댓글을 달아주세요',
         'rows' : 5,
       })
     }
