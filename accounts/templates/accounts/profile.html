@@ -5,17 +5,19 @@
 
 {% block content %}
 
-<section class="container">
-<h1 class="my-4 text-center">내 프로필</h1>
-<form action="" method="POST">
-  {% csrf_token %}
-  <div class="my-5" style="color: gray;">
-    {{ form.as_p }}
-  </div>
-  <div class=" mb-5" style="height: 3rem;">
-    <button class="green btn w-100 h-100" type="submit">프로필 수정하기</button>
-  </div>
-</form>
-</section>
+<div class="comment-banner">
+  <section class="container d-flex flex-column justify-content-center" style="height: 90vh;">
+    <h1 class="py-4 text-center" style="color: white;">내 프로필</h1>
+    <form class="pb-3" action="" method="POST">
+      {% csrf_token %}
+      <div class="my-5" style="color: white;">
+        {{ form.as_p }}
+      </div>
+      <div class="my-5" style="height: 3rem;">
+        <button class="green btn w-100 h-100" type="submit">프로필 수정하기</button>
+      </div>
+    </form>
+  </section>
+</div>
 
 {% endblock content %}

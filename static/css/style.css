@@ -195,7 +195,7 @@
 .cards {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: center;
 }
 .card-4 {
   margin: 20px;
@@ -256,13 +256,6 @@
 /* CARD BACKGROUNDS */
 .card-4 {
   background: radial-gradient(#ffc1cc, #FFA1CF);
-}
-
-/* RESPONSIVE */
-@media (max-width: 1600px) {
-  .cards {
-    justify-content: center;
-  }
 }
 
 /* 강사목록 로그아웃 버튼 */
