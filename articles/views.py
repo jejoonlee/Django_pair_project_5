@@ -38,11 +38,16 @@ def comment(request, pk):
       comment.save()
   return redirect('articles:review', teacher.pk)
 
+@login_required
 def comment_delete(request, pk, teacher_pk):
-  comment = Comment.objects.get(pk=pk).delete()
-  teacher = Teacher.objects.get(pk=teacher_pk)
-  return redirect('articles:review', teacher.pk)
+  if request.user == comment.user:
+    comment = Comment.objects.get(pk=pk).delete()
+    teacher = Teacher.objects.get(pk=teacher_pk)
+    return redirect('articles:review', teacher.pk)
+  else:
+    return ('articles:review', teacher.pk)
 
+@login_required
 def like(request, teacher_pk, pk):
   comment = Comment.objects.get(pk=pk)
 
@@ -56,6 +61,7 @@ def like(request, teacher_pk, pk):
 
   data = {
     'isLike': is_like,
-    'likeCount' : comment.user_like.all().count(),
+    'likeCount' : comment.user_like.count(),
+    'comment' : comment.pk,
   }
   return JsonResponse(data)
